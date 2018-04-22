@@ -1,0 +1,20 @@
+{% extends 'librosBD/base.html' %}
+
+{% block content %}
+	<div class="book">
+		<h1><a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }}</a></h1>
+		<h3><a href="">{{ book.author }}</a></h3>
+		<div class="date">
+			{% if book.start_reading_date %}
+				<p>Empezado: {{ book.start_reading_date }}</p>
+				{% if book.end_reading_date %}
+					<p>Terminado: {{ book.end_reading_date }}</p>
+				{% else %}
+					<p>No he terminado de leerlo</p>
+				{% endif %}
+			{% else %}
+				<p>No lo he empezado a leer todavía</p>
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

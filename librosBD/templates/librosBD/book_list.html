@@ -1,31 +1,22 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-	<meta charset="UTF-8">
-	<title>BBDD Libros</title>
-</head>
-<body>
+{% extends 'librosBD/base.html' %}
 
-	<div>
-		<h1><a href="">Libros BD</a></h1>
-	</div>
-
+{% block content %}
 	{% for book in books %}
-		<div>
-			<h1><a href="">{{ book.title }}</a></h1>
-			<h1><a href="">{{ book.author }}</a></h1>
-			{% if book.start_reading_date %}
-				<p>Empezado: {{ book.start_reading_date }}</p>
-				{% if book.end_reading_date %}
-					<p>Terminado: {{ book.end_reading_date }}</p>
+		<div class="book">
+			<h1><a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }}</a></h1>
+			<h3><a href="">{{ book.author }}</a></h3>
+			<div class="date">
+				{% if book.start_reading_date %}
+					<p>Empezado: {{ book.start_reading_date }}</p>
+					{% if book.end_reading_date %}
+						<p>Terminado: {{ book.end_reading_date }}</p>
+					{% else %}
+						<p>No he terminado de leerlo</p>
+					{% endif %}
 				{% else %}
-					<p>No he terminado de leerlo</p>
+					<p>No lo he empezado a leer todavía</p>
 				{% endif %}
-			{% else %}
-				<p>No lo he empezado a leer todavía</p>
-			{% endif %}
+			</div>
 		</div>
 	{% endfor %}
-	
-</body>
-</html>
+{% endblock %}
