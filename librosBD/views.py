@@ -8,3 +8,8 @@ def book_list(request):
 def book_detail(request, pk):
 	book = get_object_or_404(Book, pk=pk)
 	return render(request, 'librosBD/book_detail.html', {'book': book})
+
+def book_author(request, pk):
+	book = get_object_or_404(Book, pk=pk)
+	books = Book.objects.filter(author=book.author).order_by('title')
+	return render(request, 'librosBD/book_author.html', {'books': books})

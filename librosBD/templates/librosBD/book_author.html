@@ -4,7 +4,6 @@
 	{% for book in books %}
 		<div class="book">
 			<h1><a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }}</a></h1>
-			<h3><a href="{% url 'book_author' pk=book.pk %}">{{ book.author }}</a></h3>
 			<div class="date">
 				{% if book.start_reading_date %}
 					<p>Empezado: {{ book.start_reading_date }}</p>
