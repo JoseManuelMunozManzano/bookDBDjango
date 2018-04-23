@@ -1,6 +1,9 @@
 {% extends 'librosBD/base.html' %}
 
 {% block content %}
+	<div class="book">
+		<h1>{{ author }}</h1>
+	</div>
 	{% for book in books %}
 		<div class="book">
 			<h1><a href="{% url 'book_detail' pk=book.pk %}">{{ book.title }}</a></h1>
@@ -15,6 +18,7 @@
 				{% else %}
 					<p>No lo he empezado a leer todavía</p>
 				{% endif %}
+				<a class="btn btn-default" href="{% url 'book_edit' pk=book.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>	
 			</div>
 		</div>
 	{% endfor %}
