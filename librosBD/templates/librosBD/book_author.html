@@ -19,6 +19,7 @@
 					<p>No lo he empezado a leer todavía</p>
 				{% endif %}
 				<a class="btn btn-default" href="{% url 'book_edit' pk=book.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>	
+				<a href="{% url 'book_remove' pk=book.pk %}" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>	
 			</div>
 		</div>
 	{% endfor %}
